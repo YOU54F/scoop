@@ -9,7 +9,7 @@
                 "https://github.com/pact-foundation/pact-plugins/releases/download/pact-plugin-cli-v0.1.0/pact-plugin-cli-windows-x86_64.exe.gz"
             ],
             "hash": [
-                "a4d7270b29970cd50ad4ec6d98a87068e0bb1ad9df52e86b7d3174564ac7ca73"
+                "be61fcbc1c11b3a9338e68b6f6a2ab65a39b5e6eb9eb30d53f853d846f0572a4"
             ],
             "bin": ["pact-plugin-cli.exe"]
         }
