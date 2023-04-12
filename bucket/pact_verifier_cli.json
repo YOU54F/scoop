@@ -19,12 +19,11 @@
             "64bit": {
                 "url": [
                     "https://github.com/pact-foundation/pact-reference/releases/download/pact_verifier_cli-v$version/pact_verifier_cli-windows-x86_64.exe.gz"
-                ],
-                "hash": [
-                    "https://github.com/pact-foundation/pact-reference/releases/download/pact_verifier_cli-v$version/pact_verifier_cli-windows-x86_64.exe.gz.sha256"
                 ]
             }
+        },
+        "hash": {
+            "url": "$url.sha256"
         }
     }
 }
-

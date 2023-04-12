@@ -19,12 +19,11 @@
             "64bit": {
                 "url": [
                     "https://github.com/pact-foundation/pact-plugins/releases/download/pact-plugin-cli-v$version/pact-plugin-cli-windows-x86_64.exe.gz"
-                ],
-                "hash": [
-                    "https://github.com/pact-foundation/pact-plugins/releases/download/pact-plugin-cli-v$version/pact-plugin-cli-windows-x86_64.exe.gz.sha256"
                 ]
             }
+        },
+        "hash": {
+            "url": "$url.sha256"
         }
     }
 }
-

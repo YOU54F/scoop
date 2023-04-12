@@ -19,12 +19,11 @@
             "64bit": {
                 "url": [
                     "https://github.com/pact-foundation/pact-reference/releases/download/pact_mock_server_cli-v$version/pact_mock_server_cli-windows-x86_64.exe.gz"
-                ],
-                "hash": [
-                    "https://github.com/pact-foundation/pact-reference/releases/download/pact_mock_server_cli-v$version/pact_mock_server_cli-windows-x86_64.exe.gz"
                 ]
             }
+        },
+        "hash": {
+            "url": "$url.sha256"
         }
     }
 }
-
