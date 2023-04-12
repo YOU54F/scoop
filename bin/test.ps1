@@ -13,3 +13,4 @@ $pesterConfig = New-PesterConfiguration -Hashtable @{
 }
 $result = Invoke-Pester -Configuration $pesterConfig
 exit $result.FailedCount
+
