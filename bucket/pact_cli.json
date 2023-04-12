@@ -1,0 +1,34 @@
+{
+    "version": "0.0.1",
+    "description": "Installer for the Pact Ruby Standalone CLI",
+    "homepage": "https://github.com/pact-foundation/pact-ruby-standalone",
+    "license": "MIT",
+    "architecture": {
+        "64bit": {
+            "url": [
+                "https://github.com/pact-foundation/pact-ruby-standalone/releases/download/v1.92.0/pact-1.92.0-win32.zip"
+            ],
+            "bin": [
+                "pact\\bin\\pact-broker.bat",
+                "pact\\bin\\pact-plugin-cli.exe ",
+                "pact\\bin\\pact-stub-service.bat",
+                "pact\\bin\\pact-message.bat",
+                "pact\\bin\\pact-provider-verifier.bat",
+                "pact\\bin\\pact.bat",
+                "pact\\bin\\pact-mock-service.bat",
+                "pact\\bin\\pact-publish.bat",
+                "pact\\bin\\pactflow.bat"
+            ]
+        }
+    },
+    "autoupdate": {
+        "architecture": {
+            "64bit": {
+                "url": [
+                    "https://github.com/pact-foundation/pact-ruby-standalone/releases/download/v$version/pact-$version-win32.zip"
+                ]
+            }
+        }
+    }
+}
+
