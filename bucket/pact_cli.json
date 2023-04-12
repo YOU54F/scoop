@@ -1,5 +1,5 @@
 {
-    "version": "0.0.1",
+    "version": "1.92.0",
     "description": "Installer for the Pact Ruby Standalone CLI",
     "homepage": "https://github.com/pact-foundation/pact-ruby-standalone",
     "license": "MIT",
@@ -9,8 +9,8 @@
                 "https://github.com/pact-foundation/pact-ruby-standalone/releases/download/v1.92.0/pact-1.92.0-win32.zip"
             ],
             "bin": [
+                "pact-plugin-cli.exe",
                 "pact\\bin\\pact-broker.bat",
-                "pact\\bin\\pact-plugin-cli.exe ",
                 "pact\\bin\\pact-stub-service.bat",
                 "pact\\bin\\pact-message.bat",
                 "pact\\bin\\pact-provider-verifier.bat",
