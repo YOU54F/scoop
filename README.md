@@ -11,11 +11,25 @@ bucket for [Scoop](https://scoop.sh), the Windows command-line installer.
 How do I install these manifests?
 ---------------------------------
 
-To add this bucket, run `scoop bucket add pact https://github.com/you54f/pact`.
+To add this bucket, run:
+
+`scoop bucket add pact https://github.com/you54f/pact`
+
+Search the bucket for available pact cli tools
+
+`scoop search pact`
+
+|Name                 |Version| Source|
+| -------| -------  | --------- |
+|pact                 |0.0.1  | pact|
+|pact_cli             |0.0.1  | pact|
+|pact_mock_server_cli |1.92.0  | pact|
+|pact_plugin_cli      |0.1.0  | pact|
+|pact_verifier_cli    |0.10.5 | pact|
 
 ### Pact
 
-To install, do `scoop install pact`.
+To install all the tools, do `scoop install pact`.
 
 Contains a bundle with
 
@@ -41,7 +55,6 @@ Contains a bundle with
 | -------| ------- | ------------ | --------- |
 | Windows| 3.2.2 | x86_64       | ✅        |
 | Windows| 3.2.2 | aarch64 (via x86 emulation) |  ✅        |
-
 
 How do I contribute new manifests?
 ----------------------------------
