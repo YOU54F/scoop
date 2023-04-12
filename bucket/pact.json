@@ -21,7 +21,7 @@
                 "pact\\bin\\pact.bat",
                 "pact\\bin\\pact-broker.bat",
                 "pact\\bin\\pact-message.bat",
-                "pact\\bin\\pact-plugin-cli.exe ",
+                "pact\\bin\\pact-plugin-cli.exe",
                 "pact\\bin\\pact-stub-service.bat",
                 "pact\\bin\\pact-provider-verifier.bat",
                 "pact\\bin\\pact-mock-service.bat",

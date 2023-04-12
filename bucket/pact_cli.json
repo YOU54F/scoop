@@ -9,7 +9,7 @@
                 "https://github.com/pact-foundation/pact-ruby-standalone/releases/download/v1.92.0/pact-1.92.0-win32.zip"
             ],
             "bin": [
-                "pact-plugin-cli.exe",
+                "pact\\bin\\pact-plugin-cli.exe",
                 "pact\\bin\\pact-broker.bat",
                 "pact\\bin\\pact-stub-service.bat",
                 "pact\\bin\\pact-message.bat",
