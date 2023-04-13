@@ -4,14 +4,6 @@ Pact CLI Tools
 
 ## Scoop
 
-### Supported Platforms
-
-| OS           | Architecture | Supported |
-| ------- | ------------ | --------- |
-| Windows| | x86_64       | ✅        |
-| Windows | aarch64 (via x86 emulation) |  ✅        |
-
-
 [![Tests](https://github.com/you54f/pact/actions/workflows/ci.yml/badge.svg)](https://github.com/you54f/pact/actions/workflows/ci.yml) [![Excavator](https://github.com/you54f/pact/actions/workflows/excavator.yml/badge.svg)](https://github.com/you54f/pact/actions/workflows/excavator.yml)
 
 bucket for [Scoop](https://scoop.sh), the Windows command-line installer.
@@ -35,7 +27,9 @@ Search the bucket for available pact cli tools
 |pact_plugin_cli      |0.1.0  | pact|
 |pact_verifier_cli    |0.10.5 | pact|
 
-Install all the tools, do `scoop install pact`.
+### Pact
+
+To install all the tools, do `scoop install pact`.
 
 Contains a bundle with
 
@@ -48,11 +42,19 @@ Contains a bundle with
   - pact-stub-service.bat
   - pactflow.bat
 
-You can also install the following tools separately
+| OS     | Ruby      | Architecture | Supported |
+| -------| ------- | ------------ | --------- |
+| Windows| 3.2.2 | x86_64       | ✅        |
+| Windows| 3.2.2 | aarch64 (via x86 emulation) |  ✅        |
 
 - pact-plugin-cli.exe
 - pact_verifier_cli.exe
 - pact_mock_server_cli.exe
+
+| OS     | Ruby      | Architecture | Supported |
+| -------| ------- | ------------ | --------- |
+| Windows| 3.2.2 | x86_64       | ✅        |
+| Windows| 3.2.2 | aarch64 (via x86 emulation) |  ✅        |
 
 How do I contribute new manifests?
 ----------------------------------
@@ -60,22 +62,4 @@ How do I contribute new manifests?
 To make a new manifest contribution, please read the [Contributing Guide](https://github.com/you54f/.github/blob/main/.github/CONTRIBUTING.md).
 
 ----
-
-## Homebrew
-
-[Source Repo](https://github.com/pact-foundation/homebrew-pact-ruby-standalone)
-
-### Supported Platforms
-
-| OS           | Architecture | Supported |
-| ------- | ------------ | --------- |
-| MacOS| | x86_64       | ✅        |
-| MacOS | aarch64 (via x86 emulation) |  ✅        |
-
-###  Installation
-
-```sh
-brew tap pact-foundation/pact-ruby-standalone
-brew install pact-ruby-standalone
-```
 
