@@ -60,3 +60,4 @@ How do I contribute new manifests?
 To make a new manifest contribution, please read the [Contributing Guide](https://github.com/you54f/.github/blob/main/.github/CONTRIBUTING.md).
 
 ----
+
