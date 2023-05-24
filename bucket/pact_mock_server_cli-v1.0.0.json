@@ -12,18 +12,8 @@
                 "df69c9cbae0238c2f04a37afc9e390dd4379d59ac7fcbb2b1cc70a28b4b8af21"
             ],
             "bin": ["pact_mock_server_cli.exe"]
-        }
-    },
-    "autoupdate": {
-        "architecture": {
-            "64bit": {
-                "url": [
-                    "https://github.com/pact-foundation/pact-reference/releases/download/pact_mock_server_cli-v$version/pact_mock_server_cli-windows-x86_64.exe.gz"
-                ]
-            }
         },
-        "hash": {
-            "url": "$url.sha256"
-        }
+        "32bit": {},
+        "arm64": {}
     }
 }
