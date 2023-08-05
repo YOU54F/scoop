@@ -13,7 +13,7 @@
                 "https://github.com/YOU54F/pact-ruby-standalone/releases/download/v2.4.0-alpha/pact-provider-verifier.exe.gz",
                 "https://github.com/YOU54F/pact-ruby-standalone/releases/download/v2.4.0-alpha/pact-stub-service.exe.gz",
                 "https://github.com/pact-foundation/pact-reference/releases/download/pact_mock_server_cli-v1.0.0/pact_mock_server_cli-windows-x86_64.exe.gz",
-                "https://github.com/pact-foundation/pact-reference/releases/download/pact_verifier_cli-v0.10.6/pact_verifier_cli-windows-x86_64.exe.gz"
+                "https://github.com/pact-foundation/pact-reference/releases/download/pact_verifier_cli-v0.10.6/pact_verifier_cli-windows-x86_64.exe.gz",
                 "https://github.com/pact-foundation/pact-stub-server/releases/download/v0.5.3/pact-stub-server-windows-x86_64.exe.gz",
                 "https://github.com/pact-foundation/pact-plugins/releases/download/pact-plugin-cli-v0.1.0/pact-plugin-cli-windows-x86_64.exe.gz",
             ],
@@ -25,7 +25,7 @@
                 "c87e7b78c8f3fed26fb4175c46018eea3b588315c107064d4d76b2e8f04218bc",
                 "f316cb21c793037a35d7dffa4acbee56707d6b656212fee548f365ce6d5a6a27",
                 "df69c9cbae0238c2f04a37afc9e390dd4379d59ac7fcbb2b1cc70a28b4b8af21",
-                "ee5fb8860a0b8bd948e658139e4b8f079262c4dd35579cdb2004ef9e50cfd0b6"
+                "ee5fb8860a0b8bd948e658139e4b8f079262c4dd35579cdb2004ef9e50cfd0b6",
                 "60ecf7f8202ffb1fe00ac5cee2d67be91b9de855075e7ae34283dc544a880f94",
                 "be61fcbc1c11b3a9338e68b6f6a2ab65a39b5e6eb9eb30d53f853d846f0572a4"
             ],
@@ -37,7 +37,7 @@
                 "pact-provider-verifier.exe",
                 "pact-stub-service.exe",
                 "pact-publish.exe",
-                "pactflow.exe"
+                "pactflow.exe",
                 "pact_mock_server_cli.exe",
                 "pact_verifier_cli.exe",
                 "pact-stub-server-cli.exe",
