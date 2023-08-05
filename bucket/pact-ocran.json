@@ -1,5 +1,5 @@
 {
-    "version": "0.0.1",
+    "version": "0.0.2",
     "description": "alpha install for pact cli tools built with ocran",
     "homepage": "https://github.com/YOU54F/pact-ruby-standalone/releases/tag/v2.4.0-alpha",
     "license": "MIT",
@@ -36,8 +36,6 @@
                 "pact-mock-service.exe",
                 "pact-provider-verifier.exe",
                 "pact-stub-service.exe",
-                "pact-publish.exe",
-                "pactflow.exe",
                 "pact_mock_server_cli.exe",
                 "pact_verifier_cli.exe",
                 "pact-stub-server-cli.exe",
