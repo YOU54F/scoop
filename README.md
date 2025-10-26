@@ -26,16 +26,15 @@ Search the bucket for available pact cli tools
 
 `scoop search pact`
 
-| Name                   |Version| Source
-| ----                   |-------| ------
-| pact                   |0.0.3  | pact
-| pact_mock_server_cli   |1.0.0  | pact
-| pact_mock_server_cli@1 |1.0.0  | pact
-| pact_verifier_cli      |0.10.6 | pact
-| pact_verifier_cli@0    |0.10.6 | pact
-| pact-ruby-standalone   |2.0.1  | pact
-| pact-ruby-standalone@1 |1.92.0 | pact
-| pact-ruby-standalone@2 |2.0.1  | pact
+| Name                   |Version| Source|
+| ----                   |-------| ------|
+| pact                   |0.9.0  | pact  |
+| pact-mock-server       |2.1.0  | pact  |
+| pact-stub-server       |0.7.0  | pact  |
+| pact-verifier          |1.3.0  | pact  |
+| pact-plugin            |0.2.0  | pact  |
+| pact-broker-client     |0.4.1  | pact  |
+| pact-legacy            |2.5.6  | pact  |
 
 Install all the tools, do `scoop install pact`.
 
