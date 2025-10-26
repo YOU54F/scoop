@@ -69,7 +69,6 @@ else
 
     tags=$(gh release list --repo $REPO --limit 1000 | cut -f3)
   else
-    echo gh release list --repo $REPO --limit 1000 | cut -f3 
     tags=$(gh release list --repo $REPO --limit 1000 | cut -f3 | grep -e $TOOL_NAME)
   fi
 fi
