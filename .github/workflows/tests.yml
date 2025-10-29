@@ -47,6 +47,13 @@ jobs:
       - name: Add Pact Scoop Bucket
         run: |
           scoop bucket add pact https://github.com/you54f/scoop
+
+      - name: Use external 7zip on ARM64 due to extract error
+        if: runner.os == 'windows-11-arm'
+        shell: powershell
+        run: |
+          scoop config '7ZIPEXTRACT_USE_EXTERNAL' $true
+
       - name: Install ${{ matrix.package }} Package
         run: |
           scoop install ${{ matrix.package }}
