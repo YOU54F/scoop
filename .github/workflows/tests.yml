@@ -22,13 +22,13 @@ jobs:
           "windows-11-arm"
           ]
         package: [
-          # "pact-legacy",
+          "pact-legacy",
           "pact",
           "pact-plugin",
-          # "pact-verifier",
-          # "pact-stub-server",
-          # "pact-mock-server",
-          # "pact-broker-client"
+          "pact-verifier",
+          "pact-stub-server",
+          "pact-mock-server",
+          "pact-broker-client"
           ]
     defaults:
       run:
