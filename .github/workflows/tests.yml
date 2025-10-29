@@ -44,21 +44,18 @@ jobs:
           iex "& {$(irm get.scoop.sh)} -RunAsAdmin"
           "$HOME\scoop\shims\" >> $env:GITHUB_PATH
 
-      # - name: Use external 7zip on ARM64 due to extract error
-      #   if: matrix.os == 'windows-11-arm'
-      #   shell: powershell
-      #   run: |
-      #     scoop config '7ZIPEXTRACT_USE_EXTERNAL' $true
+      - name: Use external 7zip on ARM64 due to extract error
+        if: ${{ matrix.os == 'windows-11-arm' && ( matrix.package == 'pact-verifier' || matrix.package == 'pact-plugin' || matrix.package == 'pact-mock-server' || matrix.package == 'pact-stub-server') }}
+        shell: powershell
+        run: |
+          scoop config use_external_7zip true
 
-      # - name: Add Pact Scoop Bucket
-      #   run: |
-      #     scoop bucket add pact https://github.com/you54f/scoop
+      - name: Add Pact Scoop Bucket
+        run: |
+          scoop bucket add pact https://github.com/you54f/scoop
 
-          # choco install 7zip -y
-          # scoop config '7ZIPEXTRACT_USE_EXTERNAL' $true
       - name: Install ${{ matrix.package }} Package
         run: |
-          scoop config debug $true; scoop uninstall 7zip; scoop install 7zip
           scoop bucket add pact https://github.com/you54f/scoop
           scoop install ${{ matrix.package }}
 
