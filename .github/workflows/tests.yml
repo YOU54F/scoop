@@ -1,0 +1,68 @@
+name: Tests
+
+on:
+  push:
+    branches:
+      - 'main'
+      - 'master'
+  pull_request:
+  workflow_dispatch:
+
+jobs:
+  test:
+    strategy:
+      fail-fast: false
+      matrix:
+        shell: [
+          "powershell",
+          "cmd"
+          ]
+        os: [
+          "windows-latest",
+          "windows-11-arm"
+          ]
+        package: [
+          "pact-legacy",
+          "pact",
+          "pact-plugin",
+          "pact-verifier",
+          "pact-stub-server",
+          "pact-mock-server",
+          "pact-broker-client"
+          ]
+    defaults:
+      run:
+        shell: ${{ matrix.shell }}
+    runs-on: ${{ matrix.os }}
+    steps:
+      - name: Checkout Bucket
+        uses: actions/checkout@main
+      - name: install scoop
+        shell: powershell
+        if: runner.os == 'windows'
+        run: |
+          iex "& {$(irm get.scoop.sh)} -RunAsAdmin"
+          "$HOME\scoop\shims\" >> $env:GITHUB_PATH
+
+      - name: Add Pact Scoop Bucket
+        run: |
+          scoop bucket add pact https://github.com/you54f/scoop
+      - name: Install ${{ matrix.package }} Package
+        run: |
+          scoop install ${{ matrix.package }}
+      - name: Test pact-legacy scripts
+        if: matrix.package == 'pact-legacy'
+        run: |
+          pact-broker --help
+          pact-message --help
+          pact-mock-service --help
+          pact-provider-verifier --help
+          pact-stub-service --help
+          pactflow --help
+      - name: Test ${{ matrix.package }} scripts
+        if: matrix.package != 'pact-legacy'
+        run: |
+          ${{ matrix.package }} --help
+      - name: Uninstall ${{ matrix.package }} Package
+        run: |
+          scoop uninstall ${{ matrix.package }}
