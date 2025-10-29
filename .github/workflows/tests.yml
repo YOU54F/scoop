@@ -56,7 +56,6 @@ jobs:
 
       - name: Install ${{ matrix.package }} Package
         run: |
-          scoop bucket add pact https://github.com/you54f/scoop
           scoop install ${{ matrix.package }}
 
       - name: Test pact-legacy scripts
