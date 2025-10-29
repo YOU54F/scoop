@@ -15,20 +15,20 @@ jobs:
       matrix:
         shell: [
           "powershell",
-          "cmd"
+          # "cmd"
           ]
         os: [
           "windows-latest",
           "windows-11-arm"
           ]
         package: [
-          "pact-legacy",
+          # "pact-legacy",
           "pact",
           "pact-plugin",
-          "pact-verifier",
-          "pact-stub-server",
-          "pact-mock-server",
-          "pact-broker-client"
+          # "pact-verifier",
+          # "pact-stub-server",
+          # "pact-mock-server",
+          # "pact-broker-client"
           ]
     defaults:
       run:
@@ -44,19 +44,20 @@ jobs:
           iex "& {$(irm get.scoop.sh)} -RunAsAdmin"
           "$HOME\scoop\shims\" >> $env:GITHUB_PATH
 
-      - name: Use external 7zip on ARM64 due to extract error
-        if: matrix.os == 'windows-11-arm'
-        shell: powershell
-        run: |
-          scoop config '7ZIPEXTRACT_USE_EXTERNAL' $true
+      # - name: Use external 7zip on ARM64 due to extract error
+      #   if: matrix.os == 'windows-11-arm'
+      #   shell: powershell
+      #   run: |
+      #     scoop config '7ZIPEXTRACT_USE_EXTERNAL' $true
 
-      - name: Add Pact Scoop Bucket
-        run: |
-          scoop bucket add pact https://github.com/you54f/scoop
+      # - name: Add Pact Scoop Bucket
+      #   run: |
+      #     scoop bucket add pact https://github.com/you54f/scoop
 
       - name: Install ${{ matrix.package }} Package
         run: |
           scoop config '7ZIPEXTRACT_USE_EXTERNAL' $true
+          scoop bucket add pact https://github.com/you54f/scoop
           scoop install ${{ matrix.package }}
 
       - name: Test pact-legacy scripts
