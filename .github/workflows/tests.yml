@@ -1,4 +1,4 @@
-name: Tests
+name: Scoop Install Tests
 
 on:
   push:
