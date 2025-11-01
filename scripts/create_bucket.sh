@@ -12,61 +12,60 @@ download_and_checksum() {
 }
 
 if [[ $TOOL_NAME == 'pact_mock_server_cli' ]]; then
-  description="Installer for the Pact Mock Server CLI"
+  description="Installer for Pact Mock Server CLI"
   homepage="https://github.com/pact-foundation/pact-reference/blob/master/rust/pact_mock_server_cli/README.md"
-  location="https://github.com/you54f/pact-core-mock-server"
+  location="https://github.com/pact-foundation/pact-core-mock-server"
   license="MIT"
   bin='"pact-mock-server.exe"'
-  REPO=you54f/pact-core-mock-server
+  REPO=pact-foundation/pact-core-mock-server
 elif [[ $TOOL_NAME == 'pact_verifier_cli' ]]; then
-  description="Installer for the Pact Verifier CLI"
+  description="Installer for Pact Verifier CLI"
   homepage="https://github.com/pact-foundation/pact-reference/blob/master/rust/pact_verifier_cli/README.md"
-  location="https://github.com/you54f/pact-reference"
+  location="https://github.com/pact-foundation/pact-reference"
   license="MIT"
   bin='"pact-verifier.exe"'
-  REPO=you54f/pact-reference
+  REPO=pact-foundation/pact-reference
 elif [[ $TOOL_NAME == 'pact-plugin-cli' ]]; then
-  description="Installer for the Pact Plugin CLI"
+  description="Installer for Pact Plugin CLI"
   homepage="https://github.com/pact-foundation/pact-plugins/blob/main/cli/README.md"
-  location="https://github.com/you54f/pact-plugins"
+  location="https://github.com/pact-foundation/pact-plugins"
   license="MIT"
   bin='"pact-plugin.exe"'
-  REPO=you54f/pact-plugins
+  REPO=pact-foundation/pact-plugins
 elif [[ $TOOL_NAME == 'pact-stub-server' ]]; then
-  description="Installer for the Pact Stub Server"
+  description="Installer for Pact Stub Server"
   homepage="https://github.com/pact-foundation/pact-stub-server/blob/master/README.md"
-  location="https://github.com/you54f/pact-stub-server"
+  location="https://github.com/pact-foundation/pact-stub-server"
   license="MIT"
   bin='"pact-stub-server.exe"'
-  REPO=you54f/pact-stub-server
+  REPO=pact-foundation/pact-stub-server
 elif [[ $TOOL_NAME == 'pact-broker-cli' ]]; then
-  description="Installer for the Pact Broker Client"
+  description="Installer for Pact Broker Client"
   homepage="https://github.com/pact-foundation/pact-broker-cli/blob/main/README.md"
   location="https://github.com/pact-foundation/pact-broker-cli"
   license="MIT"
   bin='"pact-broker-client.exe"'
   REPO=pact-foundation/pact-broker-cli
 elif [[ $TOOL_NAME == 'pact-cli' ]]; then
-  description="Installer for the Pact Cli"
-  homepage="https://github.com/you54f/pact-cli/blob/main/README.md"
-  location="https://github.com/you54f/pact-cli"
+  description="Installer for Pact Cli"
+  homepage="https://github.com/pact-foundation/pact-cli/blob/main/README.md"
+  location="https://github.com/pact-foundation/pact-cli"
   license="MIT"
-  bin='"pact-cli.exe"'
-  REPO=you54f/pact-cli
-elif [[ $TOOL_NAME == 'pact-ruby-standalone' ]]; then
-  description="Installer for the Pact Ruby Standalone"
+  bin='"pact.exe"'
+  REPO=pact-foundation/pact-cli
+elif [[ $TOOL_NAME == 'pact-legacy' ]]; then
+  description="Installer for Pact Ruby Standalone"
   homepage="https://github.com/pact-foundation/ruby-standalone/README.md"
-  location="https://github.com/you54f/pact-standalone"
+  location="https://github.com/pact-foundation/pact-standalone"
   license="MIT"
-  bin='"pact\\bin\\pact-broker.bat","pact\\bin\\pact-stub-service.bat","pact\\bin\\pact-message.bat","pact\\bin\\pact-provider-verifier.bat","pact\\bin\\pact.bat","pact\\bin\\pact-mock-service.bat","pact\\bin\\pact-publish.bat","pact\\bin\\pactflow.bat"'
-  REPO=you54f/pact-standalone
+  bin='"pact\\bin\\pact-broker.bat","pact\\bin\\pact-stub-service.bat","pact\\bin\\pact-message.bat","pact\\bin\\pact-provider-verifier.bat","pact\\bin\\pact-mock-service.bat","pact\\bin\\pact-publish.bat","pact\\bin\\pactflow.bat"'
+  REPO=pact-foundation/pact-standalone
 fi
 
 if [[ $1 ]]; then
   tags=($1)
 else
-  if [[ $TOOL_NAME == 'pact-ruby-standalone' ]]; then
-
+  if [[ $TOOL_NAME == 'pact-legacy' ]]; then
     tags=$(gh release list --repo $REPO --limit 1000 | cut -f3)
   else
     tags=$(gh release list --repo $REPO --limit 1000 | cut -f3 | grep -e $TOOL_NAME)
@@ -74,10 +73,18 @@ else
 fi
 
 for tag in ${tags[@]}; do
-    if [[ $TOOL_NAME == 'pact-ruby-standalone' ]]; then
-    SCOOP_FILENAME=pact-ruby-standalone-$tag.json
+  if [[ $TOOL_NAME == 'pact_mock_server_cli' ]]; then
+    SCOOP_FILENAME=pact-mock-server.json
+  elif [[ $TOOL_NAME == 'pact_verifier_cli' ]]; then
+    SCOOP_FILENAME=pact-verifier.json
+  elif [[ $TOOL_NAME == 'pact-plugin-cli' ]]; then
+    SCOOP_FILENAME=pact-plugin.json
+  elif [[ $TOOL_NAME == 'pact-cli' ]]; then
+    SCOOP_FILENAME=pact.json
+  elif [[ $TOOL_NAME == 'pact-broker-cli' ]]; then
+    SCOOP_FILENAME=pact-broker-client.json
   else
-    SCOOP_FILENAME=$tag.json
+    SCOOP_FILENAME=${TOOL_NAME}.json
   fi
   version=${tag#v}
   echo creating tap for $version
@@ -152,12 +159,33 @@ for tag in ${tags[@]}; do
         download_and_checksum $windows_arm64
         windows_arm64_shashum=${shasignature[1]}
         windows_arm64_url="$location/releases/download/$tag/$windows_arm64"
+        if [[ $TOOL_NAME == 'pact-broker-cli' ]]; then
+          windows_arm64_url="${windows_arm64_url}#/pact-broker-client.exe"
+        elif [[ $TOOL_NAME == 'pact-cli' ]]; then
+          windows_arm64_url="${windows_arm64_url}#/pact.exe"
+        fi
         echo "👮‍♀️ Checksum SHA256:\t $windows_arm64_shashum"
       fi
       if [[ $windows_x64 ]]; then
         download_and_checksum $windows_x64
         windows_x64_shashum=${shasignature[1]}
         windows_x64_url="$location/releases/download/$tag/$windows_x64"
+        if [[ $TOOL_NAME == 'pact-broker-cli' ]]; then
+          windows_x64_url="${windows_x64_url}#/pact-broker-client.exe"
+        elif [[ $TOOL_NAME == 'pact-cli' ]]; then
+          windows_x64_url="${windows_x64_url}#/pact.exe"
+        fi
+        # if pact-legacy, set arm64 variables to x64 values
+        ################################################################################
+        ################################################################################
+        if [[ $TOOL_NAME == 'pact-legacy' && -z $windows_arm64 ]]; then
+          windows_arm64_shashum=$windows_x64_shashum
+          windows_arm64_url=$windows_x64_url
+          echo "No windows_arm64, so setting to windows_x64 values"
+        fi
+        ################################################################################
+        ################################################################################
+
         echo "👮‍♀️ Checksum SHA256:\t $windows_x64_shashum"
       fi
       if [[ $windows_x86 ]]; then
@@ -165,6 +193,11 @@ for tag in ${tags[@]}; do
         download_and_checksum $windows_x86
         windows_x86_shashum=${shasignature[1]}
         windows_x86_url="$location/releases/download/$tag/$windows_x86"
+        if [[ $TOOL_NAME == 'pact-broker-cli' ]]; then
+          windows_x86_url="${windows_x86_url}#/pact-broker-client.exe"
+        elif [[ $TOOL_NAME == 'pact-cli' ]]; then
+          windows_x86_url="${windows_x86_url}#/pact.exe"
+        fi
         echo "👮‍♀️ Checksum SHA256:\t $windows_x86_shashum"
       fi
     fi
@@ -212,7 +245,8 @@ for tag in ${tags[@]}; do
     --arg SCOOP_ARM64_TEMPLATE $SCOOP_ARM64_TEMPLATE \
     '{version: $tag,description: $description,homepage: $homepage,license: $license,architecture: {'$SCOOP_X64_TEMPLATE''$SCOOP_X86_TEMPLATE''$SCOOP_ARM64_TEMPLATE'}}')
   # '{macos:{arm64:{sha256:$mac_a_sha256,url:$mac_a_url,name:$mac_a_name},amd64:{sha256:$mac_x_sha256,url:$mac_x_url,name:$mac_x_name}},linux:{arm64:{sha256:$lin_a_sha256,url:$lin_a_url,name:$lin_a_name},amd64:{sha256:$lin_x_sha256,url:$lin_x_url,name:$lin_x_name}},windows:{arm64:{sha256:$win_a_sha256,url:$win_a_url,name:$win_a_name},amd64:{sha256:$win_x_sha256,url:$win_x_url,name:$win_x_name}}}' )
-  echo $SCOOP_STRING >$SCOOP_FILENAME
+  echo $SCOOP_STRING >bucket/$SCOOP_FILENAME
+  echo "" >>bucket/$SCOOP_FILENAME
 
 
 done

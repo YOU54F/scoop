@@ -1,64 +1,63 @@
-# pact-cli
+# Pact cli tools via scoop
 
-Pact CLI Tools
+[![CI](https://github.com/pact-foundation/scoop/actions/workflows/ci.yml/badge.svg)](https://github.com/pact-foundation/scoop/actions/workflows/ci.yml)
+[![Tests](https://github.com/pact-foundation/scoop/actions/workflows/tests.yml/badge.svg)](https://github.com/pact-foundation/scoop/actions/workflows/tests.yml)
 
-## Scoop
+[Pact CLI Tools](https://docs.pact.io/implementation_guides/cli) bucket for [Scoop](https://scoop.sh), the Windows command-line installer.
 
-### Supported Platforms
+## Supported Platforms
 
-| OS      | Architecture                | Supported  |
-| ------- | ------------                | ---------  |
-| Windows | x86_64                      |   ✅       |
-| Windows | aarch64 (via x86 emulation) |   ✅       |
-
-[![Tests](https://github.com/you54f/pact/actions/workflows/ci.yml/badge.svg)](https://github.com/you54f/pact/actions/workflows/ci.yml) [![Excavator](https://github.com/you54f/pact/actions/workflows/excavator.yml/badge.svg)](https://github.com/you54f/pact/actions/workflows/excavator.yml)
-
-bucket for [Scoop](https://scoop.sh), the Windows command-line installer.
+| OS      | Architecture | Supported  |
+| ------- | ------------ | ---------  |
+| Windows | x86_64       |   ✅       |
+| Windows | aarch64      |   ✅       |
 
 How do I install these manifests?
 ---------------------------------
 
-To add this bucket, run:
+```powershell
+# Unified CLI
+scoop bucket add pact https://github.com/pact-foundation/scoop
+scoop install pact
 
-`scoop bucket add pact https://github.com/you54f/scoop`
+# Individual tools
+scoop install pact-mock-server
+scoop install pact-stub-server
+scoop install pact-verifier
+scoop install pact-plugin
+scoop install pact-broker-client
+scoop install pact-legacy
+```
 
-Search the bucket for available pact cli tools
+### GitHub Actions Example
 
-`scoop search pact`
+```yml
+- name: Install Pact via Scoop
+  if: runner.os == 'Windows'
+  shell: powershell
+  run: |
+    scoop bucket add pact https://github.com/pact-foundation/scoop
+    scoop install pact
+    scoop search pact
+    pact --help
+```
 
-| Name                   |Version| Source|
-| ----                   |-------| ------|
-| pact                   |0.9.0  | pact  |
-| pact-mock-server       |2.1.0  | pact  |
-| pact-stub-server       |0.7.0  | pact  |
-| pact-verifier          |1.3.0  | pact  |
-| pact-plugin            |0.2.0  | pact  |
-| pact-broker-client     |0.4.1  | pact  |
-| pact-legacy            |2.5.6  | pact  |
+## Creating new manifests
 
-Install all the tools, do `scoop install pact`.
+Run the following command, replacing variables
 
-Contains a bundle with
+```sh
+TOOL_NAME=<tool name> ./scripts/create_bucket.sh <TAG>
+```
 
-- Pact-Ruby-Standalone
-  - pact
-  - pact-broker
-  - pact-message
-  - pact-mock-service
-  - pact-provider-verifier
-  - pact-stub-service
-  - pactflow
-  - pact-plugin-cli
+Examples
 
-You can also install the following tools separately
-
-<!-- - pact-plugin-cli -->
-- pact_verifier_cli
-- pact_mock_server_cli
-
-How do I contribute new manifests?
-----------------------------------
-
-To make a new manifest contribution, please read the [Contributing Guide](https://github.com/you54f/.github/blob/main/.github/CONTRIBUTING.md).
-
-----
+```sh
+TOOL_NAME=pact_mock_server_cli ./scripts/create_bucket.sh pact_mock_server_cli-v2.0.0
+TOOL_NAME=pact-plugin-cli ./scripts/create_bucket.sh pact-plugin-cli-v0.2.0
+TOOL_NAME=pact-stub-server ./scripts/create_bucket.sh v0.7.0
+TOOL_NAME=pact-cli ./scripts/create_bucket.sh v0.9.1
+TOOL_NAME=pact-broker-cli ./scripts/create_bucket.sh v0.5.0
+TOOL_NAME=pact_verifier_cli ./scripts/create_bucket.sh pact_verifier_cli-v1.3.0
+TOOL_NAME=pact-legacy ./scripts/create_bucket.sh v2.5.6
+```
